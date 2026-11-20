@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل المصادر الرسمية العراقية - تقارير تحليل الإحصاء الاقتصادي</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-2: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-bg: rgba(56, 189, 248, 0.12);
+      --green: #34d399;
+      --green-bg: rgba(52, 211, 153, 0.12);
+      --amber: #fbbf24;
+      --amber-bg: rgba(251, 191, 36, 0.12);
+      --purple: #a78bfa;
+      --purple-bg: rgba(167, 139, 250, 0.12);
+      --rose: #fb7185;
+      --rose-bg: rgba(251, 113, 133, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 16px;
+    }
+
+    .container { max-width: 1150px; margin: 0 auto; }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .portals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .portal-link {
+      text-decoration: none;
+      font-size: 0.78rem;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: 0.2s;
+    }
+
+    .portal-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .guide-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 12px;
+      padding: 12px 15px;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .guide-box summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--primary);
+      outline: none;
+    }
+
+    .guide-box ul {
+      margin-top: 8px;
+      padding-right: 18px;
+    }
+
+    .guide-box li { margin-bottom: 4px; }
+
+    .controls {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 16px;
+      position: sticky;
+      top: 8px;
+      z-index: 10;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .search-box:focus { border-color: var(--primary); }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-group { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--muted);
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary-bg);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .count-badge { font-size: 0.82rem; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .num-badge {
+      background: var(--primary-bg);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .students {
+      font-size: 0.82rem;
+      color: var(--amber);
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #ffffff;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 8px;
+    }
+
+    .var-box {
+      background: var(--surface-2);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .var-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .var-name { font-size: 0.86rem; font-weight: 700; color: var(--text); }
+
+    .src-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .tag-cosit { background: var(--green-bg); color: var(--green); }
+    .tag-cbi   { background: var(--primary-bg); color: var(--primary); }
+    .tag-mof   { background: var(--amber-bg); color: var(--amber); }
+    .tag-other { background: var(--rose-bg); color: var(--rose); }
+
+    .var-path { font-size: 0.78rem; color: var(--muted); }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .btn {
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 6px 5px;
+      border-radius: 7px;
+      transition: 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-direct { background: var(--primary); color: #0b1120; }
+    .btn-direct:hover { opacity: 0.9; }
+
+    .btn-site {
+      background: rgba(52, 211, 153, 0.14);
+      color: var(--green);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+    }
+    .btn-site:hover { background: rgba(52, 211, 153, 0.24); }
+
+    .btn-smart {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-smart:hover { border-color: var(--amber); color: var(--amber); }
+
+    .note {
+      font-size: 0.76rem;
+      color: var(--purple);
+      background: var(--purple-bg);
+      padding: 6px 9px;
+      border-radius: 8px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 36px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 10px; }
+      .grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.12rem; }
+      .btn-row { grid-template-columns: 1fr 1fr; }
+      .btn-smart { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>دليل المصادر الإحصائية الرسمية العراقية — تقارير تحليل الإحصاء الاقتصادي</h1>
+      <p>جميع الـ 37 تقريراً مع 3 أزرار عملية لكل متغير (فتح الموقع، بحث داخل الموقع المأرشف، وبحث ذكي بملفات PDF الرسمية).</p>
+      <div class="portals">
+        <a class="portal-link" href="https://www.cosit.gov.iq/ar/" target="_blank" rel="noopener">هيأة الإحصاء (COSIT) ↗</a>
+        <a class="portal-link" href="https://cbiraq.org/" target="_blank" rel="noopener">قاعدة بيانات البنك المركزي (cbiraq) ↗</a>
+        <a class="portal-link" href="https://cbi.iq/" target="_blank" rel="noopener">نشرات البنك المركزي (cbi.iq) ↗</a>
+        <a class="portal-link" href="https://mof.gov.iq/" target="_blank" rel="noopener">وزارة المالية (MOF) ↗</a>
+        <a class="portal-link" href="https://mop.gov.iq/" target="_blank" rel="noopener">وزارة التخطيط (MOP) ↗</a>
+        <a class="portal-link" href="https://moh.gov.iq/" target="_blank" rel="noopener">وزارة الصحة (MOH) ↗</a>
+        <a class="portal-link" href="https://mowr.gov.iq/" target="_blank" rel="noopener">وزارة الموارد المائية (MOWR) ↗</a>
+      </div>
+    </header>
+
+    <details class="guide-box">
+      <summary>💡 طريقة استخراج الجدول بسرعة (اضغط هنا إذا ما طلع بالبحث)</summary>
+      <ul>
+        <li><strong>بيانات البنك المركزي (المالية والنقدية والدين وسعر الصرف):</strong> افتح <b>cbiraq.org</b> مباشرة (ما يتأرشف بكوكل)، واختر من القائمة الجانبية القسم المطلوب (مثلاً: المالية العامة أو الإحصاءات النقدية) وحدد السنوات 2015–2020 وتكدر تنزل الجدول Excel.</li>
+        <li><strong>بيانات هيأة الإحصاء (COSIT):</strong> افتح <b>cosit.gov.iq/ar</b> وانزل لقسم <b>المجموعة الإحصائية السنوية</b> وافتح الباب المكتوب يم متغيرك (مثل الباب 3 للزراعة، الباب 14 للحسابات القومية).</li>
+        <li><strong>زر «بحث PDF رسمي»:</strong> يطلعلك النشرات السنوية الرسمية مباشرة بصيغة PDF حتى لو صفحة الوزارة ما مأرشفة بكوكل.</li>
+      </ul>
+    </details>
+
+    <section class="controls">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-box"
+        placeholder="ابحث باسم الطالب، رقم التقرير، أو اسم المتغير (مثال: كرار، التضخم، القمح، 29)..."
+      />
+      <div class="filters">
+        <div class="filter-group" id="filterButtons">
+          <button class="filter-btn active" data-filter="all">الكل (37)</button>
+          <button class="filter-btn" data-filter="cosit">هيأة الإحصاء COSIT</button>
+          <button class="filter-btn" data-filter="cbi">البنك المركزي CBI</button>
+          <button class="filter-btn" data-filter="mof">وزارة المالية MOF</button>
+          <button class="filter-btn" data-filter="other">وزارات أخرى</button>
+        </div>
+        <span class="count-badge" id="resultCount">عرض 37 من 37 تقرير</span>
+      </div>
+    </section>
+
+    <main class="grid" id="reportsGrid"></main>
+
+    <footer>
+      نصيحة لتوحيد المدة لكل التقارير: اعتمدوا الفترة الفعلية المكتملة (2015–2020) لتجنب الفجوات بين الوزارات.
+    </footer>
+  </div>
+
+  <script>
+    const S = {
+      COSIT: { name: "هيأة الإحصاء COSIT", shortAr: "الجهاز المركزي للإحصاء", url: "https://www.cosit.gov.iq/ar/", searchDomain: "cosit.gov.iq", key: "cosit", cls: "tag-cosit" },
+      CBI:   { name: "البنك المركزي CBI",  shortAr: "البنك المركزي العراقي",  url: "https://cbiraq.org/",           searchDomain: "cbi.iq",       key: "cbi",   cls: "tag-cbi"   },
+      MOF:   { name: "وزارة المالية MOF",  shortAr: "وزارة المالية العراقية", url: "https://mof.gov.iq/",           searchDomain: "mof.gov.iq",   key: "mof",   cls: "tag-mof"   },
+      MOP:   { name: "وزارة التخطيط MOP",  shortAr: "وزارة التخطيط العراقية", url: "https://mop.gov.iq/",           searchDomain: "mop.gov.iq",   key: "other", cls: "tag-other" },
+      MOH:   { name: "وزارة الصحة MOH",    shortAr: "وزارة الصحة العراقية",   url: "https://moh.gov.iq/",           searchDomain: "moh.gov.iq",   key: "other", cls: "tag-other" },
+      MOWR:  { name: "الموارد المائية MOWR", shortAr: "وزارة الموارد المائية العراق", url: "https://mowr.gov.iq/",   searchDomain: "mowr.gov.iq",  key: "other", cls: "tag-other" }
+    };
+
+    const reports = [
+      {
+        id: 1,
+        students: "اسيل نعيم - اسراء جاسم",
+        title: "تحليل العلاقة الاقتصادية بين الفقر والبطالة في العراق",
+        v1: { name: "معدل الفقر", src: S.COSIT, path: "مؤشرات التنمية البشرية ومسوح الفقر (أو بيانات وزارة التخطيط)", siteQ: "الفقر", smartQ: "معدل الفقر العراق وزارة التخطيط 2015 2020" },
+        v2: { name: "معدل البطالة", src: S.MOP, path: "تقارير وزارة التخطيط والباب الثاني (القوى العاملة) في COSIT", siteQ: "البطالة", smartQ: "معدل البطالة العراق الجهاز المركزي للاحصاء" },
+        note: "مسوح الفقر والبطالة لا تُجرى سنوياً بانتظام، فتُجمع سنواتها الرسمية من COSIT ووزارة التخطيط."
+      },
+      {
+        id: 2,
+        students: "ام البنين جواد - ام البنين حيدر",
+        title: "تحليل العلاقة الاقتصادية بين عدد السكان ومعدل الادخار في العراق",
+        v1: { name: "عدد السكان", src: S.COSIT, path: "المجموعة الإحصائية ← الباب الثاني: تقديرات السكان السنوية", siteQ: "تقديرات السكان", smartQ: "تقديرات السكان العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "معدل الادخار", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية (الدخل المتاح − الاستهلاك النهائي)", siteQ: "الحسابات القومية", smartQ: "الحسابات القومية الدخل القومي العراق cosit" },
+        note: "يُحسب الادخار من جداول الحسابات القومية بطرح الاستهلاك النهائي من الدخل القومي المتاح."
+      },
+      {
+        id: 3,
+        students: "ايات فرحان - بتول علي",
+        title: "تحليل العلاقة الاقتصادية بين العملة في التداول وعرض النقد في العراق",
+        v1: { name: "العملة في التداول", src: S.CBI, path: "cbiraq.org ← الإحصاءات النقدية والمصرفية ← العملة في التداول", siteQ: "النشرة الإحصائية السنوية", smartQ: "العملة في التداول البنك المركزي العراقي النشرة الإحصائية" },
+        v2: { name: "عرض النقد (M1 / M2)", src: S.CBI, path: "cbiraq.org ← الإحصاءات النقدية ← عرض النقد", siteQ: "عرض النقد", smartQ: "عرض النقد البنك المركزي العراقي النشرة الإحصائية" }
+      },
+      {
+        id: 4,
+        students: "بنين ثجيل - بنين عباس",
+        title: "تحليل العلاقة الاقتصادية بين الناتج المحلي الإجمالي ومتوسط نصيب الفرد منه",
+        v1: { name: "الناتج المحلي الإجمالي (GDP)", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← تقارير الناتج المحلي", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "متوسط نصيب الفرد من GDP", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← متوسط نصيب الفرد", siteQ: "نصيب الفرد", smartQ: "متوسط نصيب الفرد من الناتج المحلي الإجمالي العراق" }
+      },
+      {
+        id: 5,
+        students: "بنين نعيم - تبارك حيدر",
+        title: "تحليل العلاقة الاقتصادية بين كمية الغاز الطبيعي المحروق وعدد الإصابات بالأمراض السرطانية في العراق",
+        v1: { name: "كمية الغاز الطبيعي المحروق", src: S.COSIT, path: "الباب الثامن عشر: الإحصاءات النفطية / مؤشرات البيئة", siteQ: "الغاز الطبيعي", smartQ: "كمية الغاز الطبيعي المحروق العراق وزارة النفط" },
+        v2: { name: "عدد الإصابات بالسرطان", src: S.MOH, path: "التقرير الإحصائي السنوي لمجلس السرطان العراقي (وزارة الصحة)", siteQ: "مجلس السرطان", smartQ: "التقرير السنوي مجلس السرطان العراقي وزارة الصحة" }
+      },
+      {
+        id: 6,
+        students: "تمارا حيدر - حنين نعيم",
+        title: "تحليل العلاقة الاقتصادية بين الدخل القومي ومتوسط نصيب الفرد منه في العراق",
+        v1: { name: "الدخل القومي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← تقارير الدخل القومي", siteQ: "الدخل القومي", smartQ: "الدخل القومي العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "متوسط نصيب الفرد من الدخل القومي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← متوسط نصيب الفرد", siteQ: "الدخل القومي نصيب الفرد", smartQ: "متوسط نصيب الفرد من الدخل القومي العراق" }
+      },
+      {
+        id: 7,
+        students: "حسن سعيد - حيدر جودة",
+        title: "تحليل العلاقة الاقتصادية بين معدل البطالة والناتج المحلي الإجمالي",
+        v1: { name: "معدل البطالة", src: S.COSIT, path: "الباب الثاني: القوى العاملة (واستكمال السنوات من وزارة التخطيط)", siteQ: "القوى العاملة", smartQ: "معدل البطالة العراق وزارة التخطيط" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية (ومتوفر أيضاً في cbiraq.org)", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق النشرة الإحصائية" }
+      },
+      {
+        id: 8,
+        students: "رقية رعد - رقية مازن",
+        title: "تحليل العلاقة الاقتصادية بين الصادرات والناتج المحلي الإجمالي في العراق",
+        v1: { name: "إجمالي الصادرات", src: S.COSIT, path: "الباب الثالث عشر: التجارة الخارجية (أو ميزان المدفوعات في CBI)", siteQ: "التجارة الخارجية", smartQ: "إجمالي الصادرات العراق التجارة الخارجية cosit" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 9,
+        students: "رقية نجاح - روسم غزوان",
+        title: "تحليل العلاقة الاقتصادية بين الإيرادات النفطية والإنفاق الحكومي",
+        v1: { name: "الإيرادات النفطية", src: S.CBI, path: "cbiraq.org ← المالية العامة ← الإيرادات النفطية", siteQ: "الإيرادات النفطية", smartQ: "الإيرادات النفطية العراق البنك المركزي وزارة المالية" },
+        v2: { name: "الإنفاق الحكومي (النفقات العامة)", src: S.MOF, path: "وزارة المالية ← دائرة المحاسبة / الموازنة المفتوحة (أو cbiraq.org)", siteQ: "الموازنة المفتوحة", smartQ: "إجمالي النفقات الفعلية العراق وزارة المالية" }
+      },
+      {
+        id: 10,
+        students: "زهراء قاسم - زهراء كريم",
+        title: "تحليل العلاقة الاقتصادية بين عدد السكان وحجم القوة العاملة",
+        v1: { name: "عدد السكان", src: S.COSIT, path: "الباب الثاني: تقديرات السكان السنوية", siteQ: "تقديرات السكان", smartQ: "تقديرات السكان العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "حجم القوة العاملة", src: S.COSIT, path: "الباب الثاني: إحصاءات السكان والقوى العاملة", siteQ: "القوى العاملة", smartQ: "حجم القوى العاملة العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 11,
+        students: "زينب صادق - زينب حسن",
+        title: "تحليل العلاقة الاقتصادية بين كمية الأمطار والإنتاج الزراعي",
+        v1: { name: "كمية الأمطار السنوية", src: S.COSIT, path: "الباب الأول: الأحوال الطبيعية والمناخية ← كميات الأمطار", siteQ: "الاحوال الطبيعية", smartQ: "كمية الأمطار السنوية العراق المجموعة الإحصائية" },
+        v2: { name: "الإنتاج الزراعي", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية (أو الناتج الزراعي في الباب 14)", siteQ: "الاحصاءات الزراعية", smartQ: "الإنتاج الزراعي العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 12,
+        students: "زينب صالح - زينب صبري",
+        title: "تحليل العلاقة الاقتصادية بين الواردات والناتج المحلي الإجمالي",
+        v1: { name: "إجمالي الواردات (الاستيرادات)", src: S.COSIT, path: "الباب الثالث عشر: التجارة الخارجية (أو ميزان المدفوعات في CBI)", siteQ: "الاستيرادات", smartQ: "الاستيرادات العراق التجارة الخارجية cosit" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق cosit" }
+      },
+      {
+        id: 13,
+        students: "زينب صدام - زينب ناصر",
+        title: "تحليل العلاقة الاقتصادية بين المساحة المزروعة وإنتاج محصول القمح",
+        v1: { name: "المساحة المزروعة بالقمح (الحنطة)", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير الحنطة والشعير", siteQ: "الحنطة", smartQ: "إنتاج الحنطة والشعير المساحة المزروعة العراق cosit" },
+        v2: { name: "إنتاج محصول القمح (الحنطة)", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير الحنطة والشعير", siteQ: "انتاج الحنطة", smartQ: "تقرير إنتاج الحنطة والشعير الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 14,
+        students: "سارة هليل - فاطمة عامر",
+        title: "تحليل العلاقة الاقتصادية بين معدل التضخم والإنفاق الاستهلاكي في العراق",
+        v1: { name: "معدل التضخم السنوي", src: S.COSIT, path: "الباب السابع: الأرقام القياسية للأسعار (ومتوفر في cbiraq.org)", siteQ: "الارقام القياسية", smartQ: "معدل التضخم السنوي العراق البنك المركزي" },
+        v2: { name: "الإنفاق الاستهلاكي النهائي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← الإنفاق الاستهلاكي", siteQ: "الحسابات القومية", smartQ: "الإنفاق الاستهلاكي النهائي العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 15,
+        students: "شهد عصام - صفاء محمد",
+        title: "تحليل العلاقة الاقتصادية بين المساحة المزروعة وإنتاج محصول الشعير",
+        v1: { name: "المساحة المزروعة بالشعير", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير الحنطة والشعير", siteQ: "الشعير", smartQ: "المساحة المزروعة الشعير العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "إنتاج محصول الشعير", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير الحنطة والشعير", siteQ: "الحنطة والشعير", smartQ: "إنتاج الشعير العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 16,
+        students: "شهد نصير - فاطمة بشار",
+        title: "تحليل العلاقة الاقتصادية بين الدين العام والإنفاق الحكومي",
+        v1: { name: "الدين العام (الداخلي والخارجي)", src: S.CBI, path: "cbiraq.org أو النشرة الإحصائية السنوية في cbi.iq ← الدين العام", siteQ: "الدين العام", smartQ: "الدين العام الداخلي الخارجي العراق البنك المركزي" },
+        v2: { name: "الإنفاق الحكومي (النفقات العامة)", src: S.MOF, path: "وزارة المالية ← الموازنة المفتوحة (أو المالية العامة في cbiraq.org)", siteQ: "النفقات", smartQ: "النفقات العامة الفعلية العراق البنك المركزي" }
+      },
+      {
+        id: 17,
+        students: "محمد علي - منتظر جابر",
+        title: "تحليل العلاقة الاقتصادية بين سعر الصرف ومعدل التضخم",
+        v1: { name: "سعر الصرف (الرسمي / الموازي)", src: S.CBI, path: "cbiraq.org ← أسعار الصرف (أو النشرة الإحصائية في cbi.iq)", siteQ: "سعر الصرف", smartQ: "سعر الصرف السنوي العراق البنك المركزي العراقي" },
+        v2: { name: "معدل التضخم", src: S.COSIT, path: "الباب السابع: الأرقام القياسية للأسعار (ومتوفر أيضاً في cbiraq.org)", siteQ: "التضخم", smartQ: "معدل التضخم العراق البنك المركزي النشرة الإحصائية" }
+      },
+      {
+        id: 18,
+        students: "نور الهدى هادي - وضحة توفيق",
+        title: "تحليل العلاقة الاقتصادية بين عرض النقد والناتج المحلي الإجمالي",
+        v1: { name: "عرض النقد (M2)", src: S.CBI, path: "cbiraq.org ← الإحصاءات النقدية ← عرض النقد", siteQ: "عرض النقد", smartQ: "عرض النقد M2 العراق البنك المركزي العراقي" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.CBI, path: "cbiraq.org ← الحسابات القومية (مطابقة لبيانات COSIT)", siteQ: "الناتج المحلي", smartQ: "الناتج المحلي الإجمالي العراق النشرة الإحصائية السنوية" }
+      },
+      {
+        id: 19,
+        students: "أسماء ماجد",
+        title: "تحليل العلاقة الاقتصادية بين المساحة المزروعة وإنتاج التمور",
+        v1: { name: "المساحة المزروعة / أعداد النخيل المثمر", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير إنتاج التمور", siteQ: "التمور", smartQ: "تقرير إنتاج التمور أعداد النخيل العراق cosit" },
+        v2: { name: "كمية إنتاج التمور", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية ← تقارير إنتاج التمور", siteQ: "انتاج التمور", smartQ: "إنتاج التمور العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 20,
+        students: "بشرى علي - بتول ياس",
+        title: "تحليل العلاقة الاقتصادية بين الإنتاج الزراعي وحجم الصادرات الزراعية",
+        v1: { name: "الإنتاج الزراعي", src: S.COSIT, path: "الباب الثالث: الإحصاءات الزراعية (أو الناتج الزراعي في الباب 14)", siteQ: "الاحصاءات الزراعية", smartQ: "الإنتاج الزراعي العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "حجم الصادرات الزراعية", src: S.COSIT, path: "الباب الثالث عشر: التجارة الخارجية ← صادرات السلع الزراعية", siteQ: "التجارة الخارجية", smartQ: "الصادرات الزراعية العراق التجارة الخارجية cosit" }
+      },
+      {
+        id: 21,
+        students: "حيدر جبار - رحيم احمد",
+        title: "تحليل العلاقة الاقتصادية بين الإنفاق على التعليم والنمو الاقتصادي",
+        v1: { name: "الإنفاق الحكومي على التعليم", src: S.MOF, path: "وزارة المالية ← جداول الموازنة والحسابات الفعلية لوزارتي التربية والتعليم العالي", siteQ: "التربية", smartQ: "الإنفاق الحكومي على التعليم العراق وزارة المالية" },
+        v2: { name: "معدل النمو الاقتصادي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية (معدل نمو الناتج المحلي)", siteQ: "الناتج المحلي الاجمالي", smartQ: "معدل النمو الاقتصادي العراق الناتج المحلي البنك المركزي" }
+      },
+      {
+        id: 22,
+        students: "رسول فليح - زين العابدين احمد",
+        title: "تحليل العلاقة الاقتصادية بين النفقات الاستثمارية واجمالي النفقات في العراق",
+        v1: { name: "النفقات الاستثمارية", src: S.MOF, path: "وزارة المالية ← دائرة المحاسبة (أو المالية العامة في cbiraq.org)", siteQ: "الاستثمارية", smartQ: "النفقات الاستثمارية الفعلية العراق وزارة المالية" },
+        v2: { name: "إجمالي النفقات العامة", src: S.CBI, path: "cbiraq.org ← المالية العامة ← النفقات العامة", siteQ: "النشرة الإحصائية السنوية", smartQ: "النفقات العامة العراق البنك المركزي العراقي" }
+      },
+      {
+        id: 23,
+        students: "سجاد ياسر - سيف فلاح",
+        title: "تحليل العلاقة الاقتصادية بين النفقات العامة والدين العام في العراق",
+        v1: { name: "النفقات العامة", src: S.CBI, path: "cbiraq.org ← المالية العامة (أو الموازنة المفتوحة في وزارة المالية)", siteQ: "النشرة الإحصائية السنوية", smartQ: "النفقات العامة الفعلية العراق البنك المركزي" },
+        v2: { name: "الدين العام", src: S.CBI, path: "cbiraq.org / النشرة الإحصائية السنوية في cbi.iq ← الدين العام", siteQ: "الدين العام", smartQ: "الدين العام العراق البنك المركزي العراقي" }
+      },
+      {
+        id: 24,
+        students: "شهد سعدون - شهد عبد الهادي",
+        title: "تحليل العلاقة الاقتصادية بين الإيرادات المائية السنوية وكمية المياه الداخلة إلى الأهوار",
+        v1: { name: "الإيرادات المائية السنوية", src: S.MOWR, path: "وزارة الموارد المائية ← بيانات الواردات المائية (وأيضاً مؤشرات البيئة في COSIT)", siteQ: "الواردات المائية", smartQ: "الإيرادات المائية السنوية العراق وزارة الموارد المائية" },
+        v2: { name: "كمية المياه الداخلة للأهوار", src: S.MOWR, path: "وزارة الموارد المائية ← مركز إنعاش الأهوار والأراضي الرطبة", siteQ: "الأهوار", smartQ: "كمية المياه الداخلة الأهوار العراق وزارة الموارد المائية" },
+        note: "بعض السنوات متوفرة أيضاً في الباب السابع عشر (قطاع الماء / مؤشرات البيئة) في موقع COSIT."
+      },
+      {
+        id: 25,
+        students: "عبد الكريم احمد - عبد الله سلمان",
+        title: "تحليل العلاقة الاقتصادية بين أعداد السيارات في العراق وحوادث الطرق المسجلة",
+        v1: { name: "أعداد السيارات المسجلة", src: S.COSIT, path: "الباب السادس: إحصاءات النقل والاتصالات ← أعداد السيارات", siteQ: "السيارات", smartQ: "أعداد السيارات في العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "حوادث الطرق المسجلة", src: S.COSIT, path: "الباب السادس: إحصاءات النقل ← تقارير حوادث المرور السنوية", siteQ: "حوادث المرور", smartQ: "تقرير حوادث المرور المسجلة العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 26,
+        students: "علي حسون - علي حسين",
+        title: "تحليل العلاقة الاقتصادية بين الإيرادات الضريبية والإيرادات العامة في العراق",
+        v1: { name: "الإيرادات الضريبية", src: S.MOF, path: "وزارة المالية ← الحسابات الفعلية للإيرادات (الضرائب)", siteQ: "الضرائب", smartQ: "الإيرادات الضريبية العراق وزارة المالية الهيئة العامة للضرائب" },
+        v2: { name: "الإيرادات العامة", src: S.CBI, path: "cbiraq.org ← المالية العامة ← الإيرادات العامة", siteQ: "النشرة الإحصائية السنوية", smartQ: "الإيرادات العامة الفعلية العراق البنك المركزي" }
+      },
+      {
+        id: 27,
+        students: "فرحان عواد - مشعل ناصر",
+        title: "تحليل العلاقة الاقتصادية بين النفقات العامة ومعدل النمو الاقتصادي",
+        v1: { name: "النفقات العامة", src: S.CBI, path: "cbiraq.org ← المالية العامة (أو وزارة المالية)", siteQ: "النشرة الإحصائية السنوية", smartQ: "النفقات العامة العراق البنك المركزي العراقي" },
+        v2: { name: "معدل النمو الاقتصادي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← معدل نمو الناتج المحلي", siteQ: "الناتج المحلي الاجمالي", smartQ: "معدل نمو الناتج المحلي الإجمالي العراق cosit" }
+      },
+      {
+        id: 28,
+        students: "عماد داود - وسام حسنين",
+        title: "تحليل العلاقة الاقتصادية بين الإيرادات العامة والعجز المالي",
+        v1: { name: "الإيرادات العامة", src: S.CBI, path: "cbiraq.org ← المالية العامة ← الإيرادات العامة", siteQ: "النشرة الإحصائية السنوية", smartQ: "الإيرادات العامة العراق البنك المركزي وزارة المالية" },
+        v2: { name: "العجز / الفائض المالي", src: S.MOF, path: "وزارة المالية ← الموازنة المفتوحة (أو جدول المالية العامة في cbiraq.org)", siteQ: "الموازنة المفتوحة", smartQ: "العجز الفائض المالي العراق البنك المركزي وزارة المالية" }
+      },
+      {
+        id: 29,
+        students: "كرار كمال - غدير رسول",
+        title: "تحليل العلاقة الاقتصادية بين العجز المالي والناتج المحلي الإجمالي",
+        v1: { name: "العجز المالي", src: S.CBI, path: "cbiraq.org ← المالية العامة ← الفائض / العجز (ومطابقتها مع وزارة المالية)", siteQ: "النشرة الإحصائية السنوية", smartQ: "العجز المالي العراق البنك المركزي العراقي النشرة الإحصائية" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية (ومتوفر بسلسلة موحدة في cbiraq.org)", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 30,
+        students: "كرار حسن - مصطفى صالح",
+        title: "تحليل العلاقة الاقتصادية بين الودائع الجارية وعرض النقد",
+        v1: { name: "الودائع الجارية", src: S.CBI, path: "cbiraq.org ← الإحصاءات النقدية ← الميزانية المجمعة للمصارف (الودائع الجارية)", siteQ: "الودائع", smartQ: "الودائع الجارية العراق البنك المركزي النشرة الإحصائية" },
+        v2: { name: "عرض النقد", src: S.CBI, path: "cbiraq.org ← الإحصاءات النقدية ← عرض النقد", siteQ: "عرض النقد", smartQ: "عرض النقد العراق البنك المركزي العراقي" }
+      },
+      {
+        id: 31,
+        students: "ليث علي - محمد صادق",
+        title: "تحليل العلاقة الاقتصادية بين اجمالي الانفاق العام والانفاق على الصحة",
+        v1: { name: "إجمالي الإنفاق العام", src: S.CBI, path: "cbiraq.org ← المالية العامة (أو وزارة المالية)", siteQ: "النشرة الإحصائية السنوية", smartQ: "إجمالي النفقات العامة العراق البنك المركزي" },
+        v2: { name: "الإنفاق على الصحة", src: S.MOF, path: "وزارة المالية ← النفقات الفعلية لوزارة الصحة (أو التقرير الإحصائي لـ MOH)", siteQ: "الصحة", smartQ: "الإنفاق الحكومي على الصحة العراق وزارة المالية" }
+      },
+      {
+        id: 32,
+        students: "محمد صبري - محمد علي ياسر",
+        title: "تحليل العلاقة الاقتصادية بين النفقات الاستثمارية والدين العام",
+        v1: { name: "النفقات الاستثمارية", src: S.MOF, path: "وزارة المالية ← دائرة المحاسبة / الموازنة المفتوحة (أو cbiraq.org)", siteQ: "الاستثمارية", smartQ: "النفقات الاستثمارية العراق وزارة المالية" },
+        v2: { name: "الدين العام", src: S.CBI, path: "cbiraq.org / النشرة الإحصائية السنوية في cbi.iq ← الدين العام", siteQ: "الدين العام", smartQ: "الدين العام العراق البنك المركزي العراقي" }
+      },
+      {
+        id: 33,
+        students: "محمد هادي - مقتدى محمد",
+        title: "تحليل العلاقة الاقتصادية بين الإنفاق الحكومي على التعليم ومعدل الالتحاق بالتعليم",
+        v1: { name: "الإنفاق الحكومي على التعليم", src: S.MOF, path: "وزارة المالية ← النفقات الفعلية لوزارتي التربية والتعليم العالي", siteQ: "التربية", smartQ: "الإنفاق على التعليم العراق وزارة المالية" },
+        v2: { name: "معدل الالتحاق بالتعليم", src: S.COSIT, path: "الباب التاسع: إحصاءات التعليم ← مؤشرات ونسب الالتحاق", siteQ: "التعليم", smartQ: "معدل الالتحاق بالتعليم العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 34,
+        students: "مصطفى جاسب - مصطفى حازم",
+        title: "تحليل العلاقة الاقتصادية بين الإنفاق الحكومي ومعدل البطالة",
+        v1: { name: "الإنفاق الحكومي", src: S.CBI, path: "cbiraq.org ← المالية العامة (أو وزارة المالية)", siteQ: "النشرة الإحصائية السنوية", smartQ: "النفقات العامة الفعلية العراق البنك المركزي" },
+        v2: { name: "معدل البطالة", src: S.COSIT, path: "الباب الثاني: السكان والقوى العاملة (واستكمال السنوات من وزارة التخطيط)", siteQ: "البطالة", smartQ: "معدل البطالة العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 35,
+        students: "مصطفى رحمان - مقتدى محمد",
+        title: "تحليل العلاقة الاقتصادية بين الإنفاق الصحي وعدد المستشفيات الحكومية",
+        v1: { name: "الإنفاق الصحي", src: S.MOF, path: "وزارة المالية ← حسابات وزارة الصحة (أو التقرير الإحصائي لوزارة الصحة)", siteQ: "الصحة", smartQ: "الإنفاق الصحي العراق وزارة المالية وزارة الصحة" },
+        v2: { name: "عدد المستشفيات الحكومية", src: S.COSIT, path: "الباب العاشر: الإحصاءات الصحية والحياتية ← أعداد المستشفيات", siteQ: "المستشفيات", smartQ: "عدد المستشفيات الحكومية العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 36,
+        students: "ملاك وقاص - ملاك وليد",
+        title: "تحليل العلاقة الاقتصادية بين تكوين رأس المال الثابت الحكومي والناتج المحلي الإجمالي في العراق",
+        v1: { name: "تكوين رأس المال الثابت الحكومي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← تكوين رأس المال الثابت (القطاع العام)", siteQ: "راس المال الثابت", smartQ: "تكوين رأس المال الثابت القطاع العام العراق cosit" },
+        v2: { name: "الناتج المحلي الإجمالي", src: S.COSIT, path: "الباب الرابع عشر: الحسابات القومية ← الناتج المحلي الإجمالي", siteQ: "الناتج المحلي الاجمالي", smartQ: "الناتج المحلي الإجمالي العراق الجهاز المركزي للاحصاء" }
+      },
+      {
+        id: 37,
+        students: "منتظر علاء",
+        title: "تحليل العلاقة الاقتصادية بين عدد السكان واعداد المستشفيات الحكومية",
+        v1: { name: "عدد السكان", src: S.COSIT, path: "الباب الثاني: تقديرات السكان السنوية", siteQ: "تقديرات السكان", smartQ: "تقديرات السكان العراق الجهاز المركزي للاحصاء" },
+        v2: { name: "أعداد المستشفيات الحكومية", src: S.COSIT, path: "الباب العاشر: الإحصاءات الصحية والحياتية ← المستشفيات الحكومية", siteQ: "المستشفيات", smartQ: "أعداد المستشفيات الحكومية العراق الجهاز المركزي للاحصاء" }
+      }
+    ];
+
+    const grid = document.getElementById("reportsGrid");
+    const searchInput = document.getElementById("searchInput");
+    const resultCount = document.getElementById("resultCount");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    let currentFilter = "all";
+
+    function buildSiteSearchUrl(domain, query) {
+      return `https://www.google.com/search?q=${encodeURIComponent(`site:${domain} ${query}`)}`;
+    }
+
+    function buildSmartPdfUrl(query) {
+      return `https://www.google.com/search?q=${encodeURIComponent(`${query} filetype:pdf`)}`;
+    }
+
+    function renderVar(label, v) {
+      const siteUrl = buildSiteSearchUrl(v.src.searchDomain, v.siteQ);
+      const smartUrl = buildSmartPdfUrl(v.smartQ);
+      return `
+        <div class="var-box">
+          <div class="var-header">
+            <span class="var-name">${label}: ${v.name}</span>
+            <span class="src-tag ${v.src.cls}">${v.src.name}</span>
+          </div>
+          <div class="var-path">${v.path}</div>
+          <div class="btn-row">
+            <a class="btn btn-direct" href="${v.src.url}" target="_blank" rel="noopener">الموقع ↗</a>
+            <a class="btn btn-site" href="${siteUrl}" target="_blank" rel="noopener">داخل الموقع 🔎</a>
+            <a class="btn btn-smart" href="${smartUrl}" target="_blank" rel="noopener">بحث PDF رسمي 📄</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function render() {
+      const term = searchInput.value.trim().toLowerCase();
+      const filtered = reports.filter(r => {
+        const matchFilter =
+          currentFilter === "all" ||
+          r.v1.src.key === currentFilter ||
+          r.v2.src.key === currentFilter;
+
+        const haystack = `${r.id} ${r.students} ${r.title} ${r.v1.name} ${r.v2.name} ${r.v1.src.name} ${r.v2.src.name}`.toLowerCase();
+        const matchSearch = !term || haystack.includes(term);
+
+        return matchFilter && matchSearch;
+      });
+
+      resultCount.textContent = `عرض ${filtered.length} من ${reports.length} تقرير`;
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="empty">لا توجد نتائج مطابقة للبحث.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(r => `
+        <article class="card">
+          <div class="card-top">
+            <span class="num-badge">تقرير #${r.id}</span>
+            <span class="students">${r.students}</span>
+          </div>
+          <h2 class="title">${r.title}</h2>
+          ${renderVar("المتغير الأول", r.v1)}
+          ${renderVar("المتغير الثاني", r.v2)}
+          ${r.note ? `<div class="note">ملاحظة: ${r.note}</div>` : ""}
+        </article>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", render);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
